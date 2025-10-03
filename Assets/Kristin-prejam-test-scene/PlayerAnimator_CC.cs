@@ -10,7 +10,7 @@ public class PlayerAnimator_CC : MonoBehaviour
     private Vector3 lastPosition;
     private float verticalVelocity;
 
-    int hashSpeed, hashIsJumping, hashIsFalling;
+    int hashSpeed, hashIsJumping;
 
     void Awake()
     {
@@ -21,7 +21,6 @@ public class PlayerAnimator_CC : MonoBehaviour
 
         hashSpeed = Animator.StringToHash("Speed");
         hashIsJumping = Animator.StringToHash("IsJumping");
-        hashIsFalling = Animator.StringToHash("IsFalling");
     }
 
     void Update()
@@ -33,25 +32,13 @@ public class PlayerAnimator_CC : MonoBehaviour
         animator.SetFloat(hashSpeed, speed);
         lastPosition = transform.position;
 
-        // Jumping
-        if (controller.isGrounded && animator.GetBool(hashIsJumping))
-        {
-            animator.SetBool(hashIsJumping, false); // landed
-        }
-
-        // Falling
-        bool isFalling = !controller.isGrounded && verticalVelocity < -0.1f;
-        animator.SetBool(hashIsFalling, isFalling);
+        // Jump/Fall detection
+        bool inAir = !controller.isGrounded;
+        animator.SetBool(hashIsJumping, inAir);
     }
 
-    // Called from movement script
     public void SetVerticalVelocity(float v)
     {
-        verticalVelocity = v;
-
-        if (controller.isGrounded && v > 0.1f) // jumping upwards
-        {
-            animator.SetBool(hashIsJumping, true);
-        }
+        verticalVelocity = v; // optional, can still use if you need upward movement logic
     }
 }
