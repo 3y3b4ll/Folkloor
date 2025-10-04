@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 423344033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.7, y: 0, z: 56.1}
+  m_LocalPosition: {x: 17.5, y: 0, z: 72.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 1183634778}
   - component: {fileID: 1183634777}
   - component: {fileID: 1183634776}
+  - component: {fileID: 1183634779}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -308,6 +309,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1183634779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183634775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335e679379239004db27a0b225d7fd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeCollisionDetection
 --- !u!1 &1222034858
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +896,7 @@ GameObject:
   - component: {fileID: 1722356083}
   - component: {fileID: 1722356084}
   - component: {fileID: 1722356085}
+  - component: {fileID: 1722356086}
   m_Layer: 0
   m_Name: Liblikas
   m_TagString: Player
@@ -1099,6 +1113,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlipSpriteAni
   spriteRenderer: {fileID: 1722356079}
   horizontalAxis: Horizontal
+--- !u!114 &1722356086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722356075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8032f1448f2ec5445bc619b4d8ad2f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMouseOnGround
+  maxSpeed: 8
+  usePhysicsRaycast: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundY: 0
+  controller: {fileID: 1722356081}
+  debugLogs: 0
+  drawGizmos: 1
+  worldCamera: {fileID: 1767073086}
 --- !u!1 &1767073082
 GameObject:
   m_ObjectHideFlags: 0
