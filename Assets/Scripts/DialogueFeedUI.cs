@@ -14,6 +14,7 @@ public class DialogueFeedUI : MonoBehaviour
     [Header("Button Appearance")]
     [SerializeField] private Color continueColor = new Color(1f, 0.5f, 0f); // orange
     [SerializeField] private Color endColor = Color.red;
+    [SerializeField] private FollowMouseOnGround playerMovement;  
 
 
     [Header("Button Text")]
@@ -50,7 +51,11 @@ public class DialogueFeedUI : MonoBehaviour
 
     public void StartDialogue(string[] source = null)
     {
-        if (source != null) lines = source;
+        if (source != null)
+            lines = source;
+
+        // Disable movement
+        if (playerMovement) playerMovement.enabled = false;
 
         // Clear previous content
         for (int i = content.childCount - 1; i >= 0; i--)
@@ -59,9 +64,10 @@ public class DialogueFeedUI : MonoBehaviour
         index = 0;
         gameObject.SetActive(true);
 
-        UpdateButtonLabel();  // sets Continue/End correctly for 1-line cases
+        UpdateButtonLabel();
         AppendNext();
     }
+
 
     private void AppendNext()
     {
@@ -127,6 +133,7 @@ public class DialogueFeedUI : MonoBehaviour
 
     private void CloseDialogue()
     {
+        if (playerMovement) playerMovement.enabled = true; // Re-enable movement
         // TODO: play a fade/SFX if you like, then hide wrapper/panel
         gameObject.SetActive(false);
     }
