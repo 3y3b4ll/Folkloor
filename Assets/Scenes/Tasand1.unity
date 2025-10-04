@@ -2286,7 +2286,7 @@ MonoBehaviour:
   revealedTileOpacity: 0.5
   fogPlaneTextureLerpTarget: {fileID: 0}
   fogPlaneTextureLerpBuffer: {fileID: 0}
-  LevelDataToLoad: {fileID: 4900000, guid: bd21235de3722f941be4007e9769d37b, type: 3}
+  LevelDataToLoad: {fileID: 0}
   saveDataOnScan: 1
   levelNameToSave: Default
   levelDimensionX: 128
