@@ -5,29 +5,51 @@ using System.Collections;
 public class FeedLine : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI label;
+    public bool IsRevealing { get; private set; }
 
-    // Call once for instant line
-    public void SetText(string richText)
+    void Awake()
     {
-        label.text = richText;
-        label.ForceMeshUpdate();
-        label.maxVisibleCharacters = label.textInfo.characterCount;
+        if (!label) label = GetComponentInChildren<TextMeshProUGUI>(true);
+        if (!label) Debug.LogError("[FeedLine] Assign a TextMeshProUGUI to 'label' on the prefab.");
     }
 
-    // Optional: typewriter reveal
-    public IEnumerator Reveal(string richText, float charsPerSecond = 60f)
+    // Instant set
+    public void SetText(string richText)
     {
-        label.text = richText;
+        if (!label) return;
+        label.text = richText ?? string.Empty;
         label.ForceMeshUpdate();
+        label.maxVisibleCharacters = label.textInfo.characterCount;
+        IsRevealing = false;
+    }
+
+    // Typewriter
+    public IEnumerator Reveal(string richText, float charsPerSecond = 80f)
+    {
+        if (!label) yield break;
+
+        IsRevealing = true;
+        label.text = richText ?? string.Empty;
+        label.ForceMeshUpdate();
+
         int total = label.textInfo.characterCount;
         label.maxVisibleCharacters = 0;
 
-        float t = 0f;
+        float visible = 0f;
         while (label.maxVisibleCharacters < total)
         {
-            t += Time.unscaledDeltaTime * charsPerSecond;
-            label.maxVisibleCharacters = Mathf.Min(total, Mathf.FloorToInt(t));
+            visible += Time.unscaledDeltaTime * charsPerSecond;
+            label.maxVisibleCharacters = Mathf.Min(total, Mathf.FloorToInt(visible));
             yield return null;
         }
+        IsRevealing = false;
+    }
+
+    public void SkipReveal()
+    {
+        if (!label) return;
+        label.maxVisibleCharacters = label.textInfo.characterCount;
+        IsRevealing = false;
     }
 }
+
