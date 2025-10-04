@@ -2592,7 +2592,7 @@ MonoBehaviour:
   dialogueUI: {fileID: 2107319577}
   talkPrompt: {fileID: 1811012213}
   interactKey: 101
-  dialogueFile: {fileID: 4900000, guid: 3ddc413a2b67e9a408e64cd209e8ddf3, type: 3}
+  dialogueFile: {fileID: 4900000, guid: 9da4634bb5cf016409c9fc899a7b2bfa, type: 3}
   dialogueLinesInspector: []
   triggerOnce: 0
 --- !u!1 &1706767952
