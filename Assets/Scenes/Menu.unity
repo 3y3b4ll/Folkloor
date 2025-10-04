@@ -1200,8 +1200,8 @@ MonoBehaviour:
   frameFade: 0.2
   fadeToBlackTime: 0.6
   quoteDelay: 0.3
-  quoteHold: 3
-  nextSceneName: Tasand 1
+  quoteHold: 5
+  nextSceneName: Tasand1
 --- !u!1 &1137607529
 GameObject:
   m_ObjectHideFlags: 0
