@@ -368,10 +368,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.12
-  m_Height: 2
+  m_Radius: 3.1917841
+  m_Height: 6.3835683
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.000000048197816, z: -1.0717843}
 --- !u!114 &113502557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +387,9 @@ MonoBehaviour:
   dialogueUI: {fileID: 2107319577}
   talkPrompt: {fileID: 1811012213}
   interactKey: 101
+  dialogueFile: {fileID: 4900000, guid: 06332037d8f89294196dce5669fcf7e2, type: 3}
+  dialogueLinesInspector: []
+  triggerOnce: 0
 --- !u!1 &143477132
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,9 +814,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466703683376866573, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078189825918400339, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -140.45209
+      objectReference: {fileID: 0}
     - target: {fileID: 3119365387618614711, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215623559754939226, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215623559754939226, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215623559754939226, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215623559754939226, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4820639991807941854, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
       propertyPath: playerMovement
@@ -898,6 +925,22 @@ PrefabInstance:
     - target: {fileID: 4856928159954996031, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999678077503453736, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999678077503453736, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438360098496888149, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54639ee690b766d4d9d8093986aca066, type: 3}
+    - target: {fileID: 8077655352337827768, guid: 02f8dcf48b136c14f895d27c29d03e0b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -14.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2198,6 +2241,81 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 3.6654038}
   m_Center: {x: 0, y: 0, z: 0.6614257}
+--- !u!1 &1570113551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570113553}
+  - component: {fileID: 1570113552}
+  m_Layer: 0
+  m_Name: FogWar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1570113552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570113551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5de54c084f472845b61ee9a97cb8a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FischlWorks_FogWar.csFogWar
+  fogRevealers:
+  - revealerTransform: {fileID: 1722356076}
+    sightRange: 10
+    updateOnlyOnMove: 1
+    lastSeenAt: {x: 0, y: 0}
+  levelMidPoint: {fileID: 1570113553}
+  FogRefreshRate: 10
+  fogPlaneHeight: 1
+  fogPlaneMaterial: {fileID: 2100000, guid: 36b93ac6fcf129c449491654e397fe4a, type: 2}
+  fogColor: {r: 0.12156863, g: 0.12215957, b: 0.18039216, a: 0.6117647}
+  fogPlaneAlpha: 1
+  fogLerpSpeed: 2.5
+  keepRevealedTiles: 0
+  revealedTileOpacity: 0.5
+  fogPlaneTextureLerpTarget: {fileID: 0}
+  fogPlaneTextureLerpBuffer: {fileID: 0}
+  LevelDataToLoad: {fileID: 4900000, guid: bd21235de3722f941be4007e9769d37b, type: 3}
+  saveDataOnScan: 1
+  levelNameToSave: Default
+  levelDimensionX: 128
+  levelDimensionY: 128
+  unitScale: 1
+  scanSpacingPerUnit: 0.25
+  rayStartHeight: 3
+  rayMaxDistance: 5
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  ignoreTriggers: 1
+  drawGizmos: 0
+  LogOutOfRange: 0
+--- !u!4 &1570113553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570113551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1607799042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2473,7 @@ GameObject:
   - component: {fileID: 1663331597}
   - component: {fileID: 1663331599}
   - component: {fileID: 1663331598}
+  - component: {fileID: 1663331600}
   m_Layer: 0
   m_Name: Tegelik uss
   m_TagString: Untagged
@@ -2458,6 +2577,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1663331600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663331596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9289539a7e777de4caee2395269fca63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EncounterTrigger
+  dialogueUI: {fileID: 2107319577}
+  talkPrompt: {fileID: 1811012213}
+  interactKey: 101
+  dialogueFile: {fileID: 4900000, guid: 3ddc413a2b67e9a408e64cd209e8ddf3, type: 3}
+  dialogueLinesInspector: []
+  triggerOnce: 0
 --- !u!1 &1706767952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2717,7 @@ GameObject:
   - component: {fileID: 1722356084}
   - component: {fileID: 1722356085}
   - component: {fileID: 1722356086}
+  - component: {fileID: 1722356087}
   m_Layer: 0
   m_Name: Liblikas
   m_TagString: Player
@@ -2597,7 +2735,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -2.52734, y: -0.46, z: 0.9}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 146352731}
@@ -2649,7 +2787,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af895452841b4f346b697e96ca020a8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c779160a4dfbf6340a5e661793415dcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2772,6 +2910,103 @@ MonoBehaviour:
   debugLogs: 0
   drawGizmos: 1
   worldCamera: {fileID: 1767073086}
+--- !u!82 &1722356087
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722356075}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 8453200c06c87f44d903d5a4cdf8f9b0, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1766583705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3289,3 +3524,4 @@ SceneRoots:
   - {fileID: 518088041}
   - {fileID: 188583771}
   - {fileID: 957543433}
+  - {fileID: 1570113553}

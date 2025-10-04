@@ -4,11 +4,16 @@ public class ForceField : MonoBehaviour
 {
     public float pushForce = 10f;       // initial strength
     public float pushDuration = 0.3f;   // how long the push lasts
+    [SerializeField] private AudioSource audioSource;  // assign in Inspector
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("Player"))
         {
+            // play sound
+            if (audioSource) audioSource.Play();
+
             CharacterController controller = other.GetComponent<CharacterController>();
             if (controller != null)
             {
