@@ -478,7 +478,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: deb52cc1d1e178b47b2d75e4c2a48233, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.824
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1160,7 +1160,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e3e4dcc32b5749d4597b39358e167eab, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.864
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1510,7 +1510,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a0b7ea4ba4c755544af22c929b25e2c6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.712
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2456,6 +2456,10 @@ PrefabInstance:
     - target: {fileID: 392165688120105327, guid: b0618617c05b24444840aaa88b50efb7, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451576361963162803, guid: b0618617c05b24444840aaa88b50efb7, type: 3}
+      propertyPath: sceneToLoad
+      value: Tug of War
       objectReference: {fileID: 0}
     - target: {fileID: 3158311226021276730, guid: b0618617c05b24444840aaa88b50efb7, type: 3}
       propertyPath: m_LocalScale.z
@@ -6744,7 +6748,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1040314935}
-  - component: {fileID: 1040314938}
   - component: {fileID: 1040314937}
   m_Layer: 0
   m_Name: Tegelik uss
@@ -6826,29 +6829,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!136 &1040314938
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040314934}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1053493507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2212882653922062652, guid: dff4e48675a779047bbd0bf65d705c9f, type: 3}

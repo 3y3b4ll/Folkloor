@@ -11,6 +11,7 @@ public class TugOfWar : MonoBehaviour
     public GameObject image1;             // First image
     public GameObject image2;             // Second image
     public GameObject sliderObj;          // The tug-of-war slider
+    public Button continueButton; // assign your button here
 
     [Header("Controls")]
     [SerializeField] private KeyCode mashKey = KeyCode.Space;
@@ -74,6 +75,7 @@ public class TugOfWar : MonoBehaviour
             GetComponent<TypewriterText>().ShowText(playerWinFile.text);
             CleanupUI();
             MuteAudio();
+            ShowButton();
         }
     }
 
@@ -88,6 +90,7 @@ public class TugOfWar : MonoBehaviour
             GetComponent<TypewriterText>().ShowText(mobWinFile.text);
             CleanupUI();
             MuteAudio();
+            ShowButton();
         }
     }
 
@@ -107,5 +110,11 @@ public class TugOfWar : MonoBehaviour
             // Alternatively, you can stop it completely:
             // fightAudio.Stop();
         }
+    }
+
+    private void ShowButton()
+    {
+        if (continueButton)
+            continueButton.gameObject.SetActive(true); // activate the button
     }
 }
