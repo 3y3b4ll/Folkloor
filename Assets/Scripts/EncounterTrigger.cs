@@ -13,6 +13,9 @@ public class EncounterTrigger : MonoBehaviour
 
     [Header("Trigger Behavior")]
     [SerializeField] private bool triggerOnce = false;      // auto-fire only the first time
+    
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource;  // assign in Inspector
 
     private string[] lines;          // resolved lines (from file or inspector)
     private bool triggeredOnce = false;
@@ -39,6 +42,9 @@ public class EncounterTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other) // use OnTriggerEnter2D for 2D physics
     {
         if (!other.CompareTag("Player")) return;
+        
+        // play sound
+        if (audioSource) audioSource.Play();
 
         playerInRange = true;
 
