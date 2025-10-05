@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tasand2.unity
     guid: ff67946d44349f14ea2fecd87e2b64f3
+  - enabled: 1
+    path: Assets/Scenes/Tasand3.unity
+    guid: 75e724a76c0bef749866c1f366c2a32c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
