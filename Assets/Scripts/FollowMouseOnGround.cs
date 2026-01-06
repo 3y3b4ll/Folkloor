@@ -10,6 +10,7 @@ public class FollowMouseOnGround : MonoBehaviour
     public bool usePhysicsRaycast = true;    // use raycast to hit actual colliders (terrain/mesh)
     public LayerMask groundLayer = ~0;       // choose ground layer(s); default = everything
     public float groundY = 0f;               // used only if usePhysicsRaycast == false
+    public LayerMask ignoreRaycastLayers;
 
     [Header("CharacterController support")]
     public CharacterController controller;   // optional - if present script uses controller.Move(delta)
@@ -69,7 +70,9 @@ public class FollowMouseOnGround : MonoBehaviour
 
         if (usePhysicsRaycast)
         {
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
+            int mask = ~ignoreRaycastLayers;
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, mask))
             {
                 if (drawGizmos) Debug.DrawLine(ray.origin, hit.point, Color.green, 0.1f);
                 return hit.point;

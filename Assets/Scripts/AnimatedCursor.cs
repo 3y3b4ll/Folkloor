@@ -8,9 +8,15 @@ public class AnimatedCursor : MonoBehaviour
     private int currentFrame;
     private float timer;
 
+    void SetFrame(Texture2D tex)
+    {
+        Vector2 hotspot = new Vector2(tex.width / 2f, tex.height / 2f);
+        Cursor.SetCursor(tex, hotspot, CursorMode.Auto);
+    }
+
     void Start()
     {
-        Cursor.SetCursor(cursorFrames[0], Vector2.zero, CursorMode.Auto); // Set initial cursor
+        SetFrame(cursorFrames[0]); // Set initial cursor
     }
 
     void Update()
@@ -22,7 +28,7 @@ public class AnimatedCursor : MonoBehaviour
 
             // Update the cursor frame
             currentFrame = (currentFrame + 1) % cursorFrames.Length;
-            Cursor.SetCursor(cursorFrames[currentFrame], Vector2.zero, CursorMode.Auto);
+            SetFrame(cursorFrames[currentFrame]);
         }
     }
 }
