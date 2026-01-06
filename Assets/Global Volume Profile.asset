@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8155231414445695982
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.PaniniProjection
+  active: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.3
+  cropToFit:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &-7875637755675659718
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -111,6 +130,7 @@ MonoBehaviour:
   - {fileID: 9093420986569131728}
   - {fileID: 4321976638558626058}
   - {fileID: 7575236580227505650}
+  - {fileID: -8155231414445695982}
 --- !u!114 &4321976638558626058
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -185,10 +205,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.405
+    m_Value: 0.4
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.683
+    m_Value: 0.7
   rounded:
     m_OverrideState: 0
     m_Value: 0
