@@ -4,55 +4,127 @@ using UnityEngine;
 public class FollowMouseOnGround : MonoBehaviour
 {
     [Header("Movement")]
-    public float maxSpeed = 8f;         // units/sec
+    public float maxSpeed = 8f;
 
     [Header("Ground projection")]
-    public bool usePhysicsRaycast = true;    // use raycast to hit actual colliders (terrain/mesh)
-    public LayerMask groundLayer = ~0;       // choose ground layer(s); default = everything
-    public float groundY = 0f;               // used only if usePhysicsRaycast == false
-    public LayerMask ignoreRaycastLayers;
+    public bool usePhysicsRaycast = true;
+    public LayerMask groundLayer;          // set this to MouseGround
+    public float groundY = 0f;              // fallback only
 
     [Header("CharacterController support")]
-    public CharacterController controller;   // optional - if present script uses controller.Move(delta)
+    public CharacterController controller;
+
+    [Header("Click Indicator")]
+    public GameObject clickIndicator;      // 2D sprite, world space
+
+    [Header("Click vs Hold")]
+    public float holdThreshold = 0.15f;     // seconds to count as hold
 
     [Header("Debug")]
     public bool debugLogs = false;
     public bool drawGizmos = true;
-    public Camera worldCamera;               // optional; if null Camera.main will be used
+    public Camera worldCamera;
 
     Camera cam;
+
+    Vector3? currentTarget;
+
+    // click / hold detection
+    Vector3? mouseDownPoint;
+    float holdTime = 0f;
+    bool wasHolding = false;
 
     void Start()
     {
         cam = worldCamera != null ? worldCamera : Camera.main;
+
         if (cam == null)
-            Debug.LogError("[FollowMouseOnGround] No camera assigned and Camera.main is null. Tag a camera \"MainCamera\" or assign one here.");
+            Debug.LogError("[FollowMouseOnGround] No camera assigned and Camera.main is null.");
 
         if (controller == null)
             controller = GetComponent<CharacterController>();
 
-        // If an Animator is on the root, ensure it isn't applying root motion unless intentional:
-        Animator anim = GetComponent<Animator>();
-        if (anim != null && anim.applyRootMotion)
-        {
-            if (debugLogs) Debug.Log("[FollowMouseOnGround] Animator has Apply Root Motion ON — this may override transform movement. Consider turning it off.");
-        }
+        if (clickIndicator != null)
+            clickIndicator.SetActive(false);
     }
 
     void Update()
     {
         if (cam == null) return;
 
-        // Only move when left mouse button is held down
-        if (!Input.GetMouseButton(0)) return;
+        // -------------------
+        // INPUT
+        // -------------------
 
-        Vector3? hitPoint = GetMouseWorldPosition();
-        if (!hitPoint.HasValue) return;
+        // mouse down: maybe a click
+        if (Input.GetMouseButtonDown(0))
+        {
+            holdTime = 0f;
+            wasHolding = false;
+            mouseDownPoint = GetMouseWorldPosition();
+        }
 
-        // We only want to change XZ; preserve current Y
-        Vector3 target = new Vector3(hitPoint.Value.x, transform.position.y, hitPoint.Value.z);
+        // mouse held: steering
+        if (Input.GetMouseButton(0))
+        {
+            holdTime += Time.deltaTime;
 
-        // Smooth move
+            if (holdTime > holdThreshold)
+                wasHolding = true;
+
+            if (wasHolding)
+            {
+                Vector3? hitPoint = GetMouseWorldPosition();
+                if (hitPoint.HasValue)
+                    currentTarget = hitPoint.Value;
+            }
+        }
+
+        // mouse released: decide
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (wasHolding)
+            {
+                // release after hold -> stop
+                currentTarget = null;
+
+                if (clickIndicator != null)
+                    clickIndicator.SetActive(false);
+            }
+            else
+            {
+                // real click -> command
+                if (mouseDownPoint.HasValue)
+                {
+                    currentTarget = mouseDownPoint.Value;
+
+                    if (clickIndicator != null)
+                    {
+                        Vector3 p = currentTarget.Value;
+                        p.y += 0.05f; // small lift above terrain
+                        clickIndicator.transform.position = p;
+                        clickIndicator.SetActive(true);
+                    }
+                }
+            }
+
+            wasHolding = false;
+            holdTime = 0f;
+            mouseDownPoint = null;
+        }
+
+        // -------------------
+        // MOVEMENT
+        // -------------------
+
+        if (!currentTarget.HasValue) return;
+
+        Vector3 target = new Vector3(
+            currentTarget.Value.x,
+            transform.position.y,
+            currentTarget.Value.z
+        );
+
         Vector3 nextPos = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
         Vector3 delta = nextPos - transform.position;
 
@@ -60,26 +132,39 @@ public class FollowMouseOnGround : MonoBehaviour
             controller.Move(delta);
         else
             transform.position = nextPos;
+
+        // -------------------
+        // ARRIVAL CHECK (XZ only)
+        // -------------------
+
+        if (clickIndicator != null && currentTarget.HasValue)
+        {
+            Vector2 a = new Vector2(transform.position.x, transform.position.z);
+            Vector2 b = new Vector2(currentTarget.Value.x, currentTarget.Value.z);
+
+            if (Vector2.Distance(a, b) < 0.1f)
+                clickIndicator.SetActive(false);
+        }
     }
 
+    // -------------------
+    // RAYCAST
+    // -------------------
 
-    // Returns world point on ground (y = groundY) or collider hit point (if using raycast)
     private Vector3? GetMouseWorldPosition()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (usePhysicsRaycast)
         {
-            int mask = ~ignoreRaycastLayers;
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, mask))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer, QueryTriggerInteraction.Ignore))
             {
                 if (drawGizmos) Debug.DrawLine(ray.origin, hit.point, Color.green, 0.1f);
                 return hit.point;
             }
             else
             {
-                if (debugLogs) Debug.Log("[FollowMouseOnGround] Raycast hit nothing on groundLayer. Check layer mask and that terrain has a collider.");
+                if (debugLogs) Debug.Log("[FollowMouseOnGround] Raycast hit nothing on groundLayer.");
                 return null;
             }
         }
