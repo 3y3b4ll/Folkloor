@@ -203,12 +203,11 @@ MonoBehaviour:
   usePhysicsRaycast: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 123
   groundY: 0
-  ignoreRaycastLayers:
-    serializedVersion: 2
-    m_Bits: 4
   controller: {fileID: 4853032556134192647}
+  clickIndicator: {fileID: 0}
+  holdThreshold: 0.15
   debugLogs: 0
   drawGizmos: 1
   worldCamera: {fileID: 0}
