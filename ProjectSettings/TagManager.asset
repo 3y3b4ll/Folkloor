@@ -2,13 +2,25 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - P_kasi
+  - V_kasi
+  - P_jalg
+  - V_jalg
+  - torso
+  - pea
+  - P_kasi_halb
+  - V_kasi_halb
+  - P_jalg_halb
+  - V_jalg_halb
+  - torso_halb
+  - pea_halb
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Kehaosad
   - Water
   - UI
   - 
@@ -50,27 +62,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
