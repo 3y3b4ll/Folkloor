@@ -16,6 +16,7 @@ TagManager:
   - V_jalg_halb
   - torso_halb
   - pea_halb
+  - Item
   layers:
   - Default
   - TransparentFX
