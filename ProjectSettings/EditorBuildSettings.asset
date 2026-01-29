@@ -23,12 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tug of War.unity
     guid: 491bfcf129b949b409d4a21ecca982c9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Body seeking.unity
     guid: 9e254ec097db2ed469a965aa448b0ba4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Trans.unity
-    guid: d06841a04d3cb644ca7e58abc1fd055c
+    guid: 37085d3532085d54f841478951f2f177
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
