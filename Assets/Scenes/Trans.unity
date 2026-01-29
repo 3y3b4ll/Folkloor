@@ -1323,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718d40973d688cc419bd9712a177586b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  itemPrefabs: []
 --- !u!4 &1990003447
 Transform:
   m_ObjectHideFlags: 0

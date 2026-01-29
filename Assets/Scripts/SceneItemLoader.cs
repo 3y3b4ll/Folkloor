@@ -1,20 +1,35 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneItemLoader : MonoBehaviour
 {
+    [Tooltip("All item prefabs that can exist in the world")]
+    public GameObject[] itemPrefabs;
+
     void Start()
     {
         if (WorldStateManager.Instance == null) return;
 
-        // If the player is holding an item, do NOT touch it
-        if (WorldStateManager.Instance.isHoldingItem)
-        {
-            GameObject heldItem = GameObject.Find(WorldStateManager.Instance.heldItemId);
-            if (heldItem != null)
-                return;
-        }
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        // Otherwise, do nothing for now
-        // (future logic like respawning or save loading goes here)
+        var itemsToSpawn =
+            WorldStateManager.Instance.GetAllItemsInScene(currentScene);
+
+        foreach (var itemData in itemsToSpawn)
+        {
+            foreach (GameObject prefab in itemPrefabs)
+            {
+                Item item = prefab.GetComponent<Item>();
+                if (item != null && item.itemId == itemData.itemId)
+                {
+                    Instantiate(
+                        prefab,
+                        itemData.position,
+                        Quaternion.identity
+                    );
+                    break;
+                }
+            }
+        }
     }
 }

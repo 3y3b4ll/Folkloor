@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -78,17 +79,30 @@ public class PlayerInventory : MonoBehaviour
     {
         if (heldItem == null) return;
 
+        string currentScene = SceneManager.GetActiveScene().name;
         Item item = heldItem.GetComponent<Item>();
-        if (item != null)
-            item.OnDrop();
 
-        Vector3 dropPos = heldItem.transform.position;
-        dropPos.y = dropY;
-        heldItem.transform.position = dropPos;
+        Vector3 pos = heldItem.transform.position;
+        pos.y = dropY;
+        heldItem.transform.position = pos;
 
-        WorldStateManager.Instance.ClearHeldItem();
+        WorldStateManager.Instance.RegisterDroppedItem(
+            item.itemId,
+            currentScene,
+            pos
+        );
+
+        // IMPORTANT:
+        // Only destroy if we are NOT in the same scene it originated from
+        if (item.originalScene != currentScene)
+        {
+            Destroy(heldItem);
+        }
+
         heldItem = null;
+        WorldStateManager.Instance.ClearHeldItem(currentScene);
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
